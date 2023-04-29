@@ -1,14 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { FlatList, Button, StyleSheet, Text, View } from 'react-native';
+
+const url = 'http://10.0.2.2:8080/employe/';
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [data, setData] = useState([]);
+
+  const getEmploye = () => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((resJson) => {
+        setData(resJson);
+      })
+      .catch(e => console.log(e))
+  }
+
+  useEffect(() => {
+    getEmploye();
+  }, [])
+
   return (
     <View style={styles.container}>
-      <Text>{count}</Text>
-      <Button title="Increment" onPress={() => setCount(count + 1)}/>
       <StatusBar style="auto" />
+      <Text>Mba misy raha ve?</Text>
+      <FlatList
+        data={data}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => {
+          return (
+            <View>
+              <Text>{item.nom}</Text>
+            </View>
+          )
+        }}
+      /> 
     </View>
   );
 }

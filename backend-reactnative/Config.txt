@@ -5,6 +5,8 @@ Model : Modèle (Hibernate)
 mvn compile
 
 //Lance le projet
+cd backend-reactnative
+cd backreact
 mvn spring-boot:run
 
 //Error : cannot found plugin
