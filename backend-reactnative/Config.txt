@@ -1,0 +1,26 @@
+Repository : DAO
+Model : Modèle (Hibernate)
+
+//Build apps : installer tous les dependances
+mvn compile
+
+//Lance le projet
+mvn spring-boot:run
+
+//Error : cannot found plugin
+1.Chemin : C:\Users\Fehizoroniaina\.m2\repository\org\apache\maven\plugins\maven-clean-plugin
+2.Chercher la version stable parmi eux
+3.Copier ce code dans pom.xml :
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-resources-plugin</artifactId>
+	<version>2.5</version> //Précise la version stable
+</plugin>
+
+//POST Parameter Body
+{
+    "numero":,
+    "nom":"",
+    "nbjours":,
+    "tauxjournalier":
+}
