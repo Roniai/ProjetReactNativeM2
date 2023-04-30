@@ -20,7 +20,7 @@ const ModalView = ({ children, title, onSubmit, cancelable, visible = false, onD
                         {cancelable && (<TouchableOpacity
                             style={{ ...styles.button, backgroundColor: 'white' }}
                             onPress={onDismiss}>
-                            <Text style={[styles.textStyle, { color: '#f44' }]}>Annuler</Text>
+                            <Text style={[styles.textStyle, { color: '#9213ff' }]}>Annuler</Text>
                         </TouchableOpacity>)}
                         {onSubmit && (<TouchableOpacity
                             style={styles.button}
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         paddingHorizontal: 20,
         marginTop: 20,
-        backgroundColor: '#f44',
+        backgroundColor: '#9213ff', /* '#f44' */
         marginLeft: 10
     },
     textStyle: {

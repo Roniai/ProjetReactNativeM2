@@ -34,6 +34,7 @@ export default function App() {
   /* Autres foncionnalités */
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [titleModal, setTitleModal] = useState("Ajout d'un employé");
 
   /* Récuperer tous les employés */
   const getEmploye = async () => {
@@ -121,6 +122,7 @@ export default function App() {
     setNom(nom)
     setNbjours(nbjours)
     setTauxjournalier(tauxjournalier)
+    setTitleModal("Modification")
   }
 
   /* Fonctionnalités sur le salaire */
@@ -171,7 +173,9 @@ export default function App() {
       {/* ############## En tête ############## */}
       <Surface style={styles.header}>
         <Title>Liste des Employés</Title>
-        <TouchableOpacity style={styles.button} onPress={() => setVisible(true)}>
+        <TouchableOpacity style={styles.button} onPress={async () => {
+              setTitleModal("Ajout d'un employé") 
+              await setVisible(true)}}>
           <Text style={styles.buttonText}>Ajout</Text>
         </TouchableOpacity>
       </Surface>
@@ -220,7 +224,7 @@ export default function App() {
       {/* ############## Fenêtre de formulaire ############## */}
       <ModalView
         visible={visible}
-        title="Ajout d'un employé"
+        title={titleModal}
         onDismiss={() => setVisible(false)}
         onSubmit={() => {
           if (id && numero && nom && nbjours && tauxjournalier) {
@@ -277,7 +281,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: 'steelblue',
+    backgroundColor: '#9213ff',
   },
   buttonText: {
     color: 'white'

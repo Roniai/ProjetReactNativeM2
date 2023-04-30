@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color:'steelblue',
+    color:'#9213ff',
     fontWeight:'700'
   },
   salaire:{
