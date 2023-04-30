@@ -3,6 +3,7 @@ package com.projet.backreact.controller;
 import com.projet.backreact.model.Employe;
 import com.projet.backreact.service.EmployeService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,4 +34,14 @@ public class EmployeController {
     public String delete(@PathVariable Integer numero){
         return employeService.supprimer(numero);
     }
+
+    @GetMapping("/total")
+    public Integer total(){return employeService.afficherTotalSalaire();}
+
+    @GetMapping("/min")
+    public Integer min(){return employeService.afficherMinSalaire();}
+
+    @GetMapping("/max")
+    public Integer max(){return employeService.afficherMaxSalaire();}
+
 }

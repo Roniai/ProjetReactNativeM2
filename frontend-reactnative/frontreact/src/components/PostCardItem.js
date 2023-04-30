@@ -9,7 +9,7 @@ const Button = ({ onPress, style, icon }) => (
   </TouchableOpacity>
 )
 
-export default function PostCardItem({ numero, nom, nbjours, tauxjournalier, onEdit, onDelete }) {
+export default function PostCardItem({ numero, nom, nbjours, tauxjournalier, salaire, onEdit, onDelete }) {
 console.log(nom)
   return (
     <Card style={styles.item}>
@@ -19,6 +19,7 @@ console.log(nom)
           <Text>Nom: {nom}</Text>
           <Text>Nombre de jours: {nbjours}</Text>
           <Text>Taux journalier: {tauxjournalier}</Text>
+          <Text style={styles.salaire}>Salaire: {salaire}</Text>
         </View>
         <View style={styles.rowView}>
           <Button
@@ -46,5 +47,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
+    color:'steelblue',
+    fontWeight:'700'
   },
+  salaire:{
+    fontWeight:'900'
+  }
 })

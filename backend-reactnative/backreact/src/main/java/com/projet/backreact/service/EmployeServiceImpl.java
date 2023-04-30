@@ -40,4 +40,19 @@ public class EmployeServiceImpl implements EmployeService{
         employeRepository.deleteById(numero);
         return "Employe supprimé !";
     }
+
+    @Override
+    public Integer afficherMinSalaire() {
+        return employeRepository.minSalaire();
+    }
+
+    @Override
+    public Integer afficherMaxSalaire() {
+        return employeRepository.maxSalaire();
+    }
+
+    @Override
+    public Integer afficherTotalSalaire(){
+        return employeRepository.totalSalaire();
+    }
 }

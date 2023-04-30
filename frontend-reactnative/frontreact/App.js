@@ -20,8 +20,7 @@ const headers = {
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [salaireTotal, setSalaireTotal] = useState(0);
 
   /* Tous les attributs de l'entité Employe */
   const [id, setId] = useState(0);
@@ -29,6 +28,10 @@ export default function App() {
   const [nom, setNom] = useState('');
   const [nbjours, setNbjours] = useState("0");
   const [tauxjournalier, setTauxjournalier] = useState("0");
+
+  /* Autres foncionnalités */
+  const [loading, setLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   /* Récuperer tous les employés */
   const getEmploye = async () => {
@@ -110,6 +113,7 @@ export default function App() {
     setNbjours(nbjours)
     setTauxjournalier(tauxjournalier)
   }
+  
 
   useEffect(() => {
     getEmploye();
@@ -119,6 +123,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
 
       <StatusBar style="auto" />
+
       {/* ############## En tête ############## */}
       <Surface style={styles.header}>
         <Title>Liste des Employés</Title>
@@ -134,13 +139,16 @@ export default function App() {
         refreshing={loading}
         onRefresh={getEmploye}
         renderItem={({ item }) => (
+          
           <PostCardItem
             numero={item.numero}
             nom={item.nom}
             nbjours={item.nbjours}
             tauxjournalier={item.tauxjournalier}
+            salaire={parseInt(item.tauxjournalier)*parseInt(item.nbjours)}
+            salaireTotal={salaireTotal + parseInt(item.tauxjournalier)*parseInt(item.nbjours)}
+            /* setSalaireTotal(salaireTotal + parseInt(item.tauxjournalier)*parseInt(item.nbjours))} */
             onEdit={() => edit(item.id, item.numero, item.nom, item.nbjours, item.tauxjournalier)}
-            /* onDelete={() => deleteEmploye(parseInt(item.id))} */
             onDelete={() => 
               Alert.alert(
                 'Supression', 
@@ -154,8 +162,17 @@ export default function App() {
               }])
             }
           />
+          
         )}
       />
+
+      {/* ############## Pied de page ############## */}
+      <Surface style={styles.header}>
+        <Text style={styles.salaireTotText}>Salaire Totale: {salaireTotal}</Text>
+        {/* <Text style={styles.salaireMText}>Salaire Maximum: {}</Text>
+        <Text style={styles.salaireMText}>Salaire Minimum: {}</Text> */}
+
+      </Surface>
 
       {/* ############## Fenêtre de formulaire ############## */}
       <ModalView
@@ -221,5 +238,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white'
+  },
+  salaireTotText: {
+    fontSize:16,
+    fontWeight:'900'
+  },
+  salaireMText: {
+    fontSize:16,
+    fontWeight:'900'
   },
 });

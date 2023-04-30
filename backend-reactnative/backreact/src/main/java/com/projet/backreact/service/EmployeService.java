@@ -9,4 +9,7 @@ public interface EmployeService {
     List<Employe> afficher();
     Employe modifier(Integer numero, Employe employe);
     String supprimer(Integer numero);
+    Integer afficherTotalSalaire();
+    Integer afficherMinSalaire();
+    Integer afficherMaxSalaire();
 }
