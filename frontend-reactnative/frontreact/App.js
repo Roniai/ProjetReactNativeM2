@@ -7,11 +7,14 @@ import ModalView from './src/components/ModalView';
 
 /*Lancer dans un émulateur*/
 /*1.Activer WIFI dans l'Emulateur
-  *2.http://10.0.2.2:<port> => fait référence à http://localhost:<port> de votre machine*/
+ *2.http://10.0.2.2:<port> => fait référence à http://localhost:<port> de votre machine*/
 /*private String url = "http://10.0.2.2:8000/api/employe";*/
 /*Lancer dans un smartphone Android*/
-/*private String url = "http://192.168.43.206:8000/api/employe; //Adresse IP WIFI*/
-const url = 'http://10.0.2.2:8080/employe';
+/*1.Lier l'ordinateur et un téléphone à une même réseau
+ *2.Lancer la ligne de commande "ipconfig" pour connaître votre Adresse IP
+ *3.http://adresse_ip:<port> => fait référence à http://localhost:<port> de votre machine */
+/* const url = 'http://10.0.2.2:8080/employe'; */
+const url = 'http://192.168.1.127:8080/employe';
 
 const headers = {
   'Content-Type': 'application/json',
