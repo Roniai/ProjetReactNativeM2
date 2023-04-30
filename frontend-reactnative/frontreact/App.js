@@ -60,6 +60,24 @@ export default function App() {
       }).catch(e => { console.log(e) })
   }
 
+  /* Modifier un nouveau Employé */
+  const editEmploye = (id, numero, nom, nbjours, tauxjournalier) => {
+    fetch(url + "/update" + `/${id}`, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({
+        "numero": numero,
+        "nom": nom,
+        "nbjours": nbjours,
+        "tauxjournalier": tauxjournalier,
+      })
+    }).then((res) => res.json())
+      .then(resJson => {
+        console.log('updated:', resJson)
+        updateEmploye()
+      }).catch(e => { console.log(e) })
+  }
+
   /* Réinitialisation des données */
   const updateEmploye = () => {
     getEmploye()
@@ -69,6 +87,15 @@ export default function App() {
     setNom('')
     setNbjours("0")
     setTauxjournalier("0")
+  }
+
+  const edit = (id, numero, nom, nbjours, tauxjournalier) => {
+    setVisible(true)
+    setId(id)
+    setNumero(numero)
+    setNom(nom)
+    setNbjours(nbjours)
+    setTauxjournalier(tauxjournalier)
   }
 
   useEffect(() => {
@@ -99,8 +126,8 @@ export default function App() {
             nom={item.nom}
             nbjours={item.nbjours}
             tauxjournalier={item.tauxjournalier}
-            /* onEdit={() => edit(item.id, item.numero, item.nom, item.nbjours, item.tauxjournalier)}
-            onDelete={() => deleteEmploye(item.id)} */
+            onEdit={() => edit(item.id, item.numero, item.nom, item.nbjours, item.tauxjournalier)}
+            /* onDelete={() => deleteEmploye(item.id)} */
           />
         )}
       />
@@ -112,7 +139,7 @@ export default function App() {
         onDismiss={() => setVisible(false)}
         onSubmit={() => {
           if (id && numero && nom && nbjours && tauxjournalier) {
-            editEmploye(id, numero, nom, nbjours, tauxjournalier)
+            editEmploye(parseInt(id), parseInt(numero), nom, parseInt(nbjours), parseInt(tauxjournalier))
           } else {
             addEmploye(parseInt(numero), nom, parseInt(nbjours), parseInt(tauxjournalier))
           }
