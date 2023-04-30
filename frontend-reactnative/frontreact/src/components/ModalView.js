@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Title } from "react-native-paper";
 
-const ModalView = ({ children, title, onSubmit, cancelable, visible = false, onDismiss, submitText = "Ok" }) => {
+const ModalView = ({ children, title, onSubmit, cancelable, visible = false, onDismiss, submitText = "Oui" }) => {
     return (
         <Modal
             animationType="fade"

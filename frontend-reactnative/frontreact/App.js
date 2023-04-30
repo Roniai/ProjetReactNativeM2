@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, TouchableOpacity, StyleSheet, Alert, Text, View } from 'react-native';
 import { Surface, Title, TextInput } from 'react-native-paper';
 import PostCardItem from './src/components/PostCardItem';
 import ModalView from './src/components/ModalView';
@@ -56,7 +56,7 @@ export default function App() {
     }).then((res) => res.json())
       .then(resJson => {
         console.log('post:', resJson)
-        updateEmploye()
+        reloadFormsEmploye()
       }).catch(e => { console.log(e) })
   }
 
@@ -74,12 +74,24 @@ export default function App() {
     }).then((res) => res.json())
       .then(resJson => {
         console.log('updated:', resJson)
-        updateEmploye()
+        reloadFormsEmploye()
       }).catch(e => { console.log(e) })
   }
 
-  /* Réinitialisation des données */
-  const updateEmploye = () => {
+  /* Supprimer un nouveau Employé */
+  const deleteEmploye = (id) => {
+    fetch(url + "/delete" + `/${id}`, {
+      method: "DELETE",
+      headers,
+    }).then((res) => res.json())
+      .then(resJson => {
+        console.log('delete:', resJson)
+        getEmploye()
+      }).catch(e => { console.log(e) })
+  }
+
+  /* Réinitialiser des données */
+  const reloadFormsEmploye = () => {
     getEmploye()
     setVisible(false);
     setId(0)
@@ -89,6 +101,7 @@ export default function App() {
     setTauxjournalier("0")
   }
 
+  /* Remplir le formulaire par l'ancien valeur */
   const edit = (id, numero, nom, nbjours, tauxjournalier) => {
     setVisible(true)
     setId(id)
@@ -119,7 +132,7 @@ export default function App() {
         data={data}
         keyExtractor={(item, index) => item.id + index.toString()}
         refreshing={loading}
-        /* onRefresh={getEmploye} */
+        onRefresh={getEmploye}
         renderItem={({ item }) => (
           <PostCardItem
             numero={item.numero}
@@ -127,7 +140,19 @@ export default function App() {
             nbjours={item.nbjours}
             tauxjournalier={item.tauxjournalier}
             onEdit={() => edit(item.id, item.numero, item.nom, item.nbjours, item.tauxjournalier)}
-            /* onDelete={() => deleteEmploye(item.id)} */
+            /* onDelete={() => deleteEmploye(parseInt(item.id))} */
+            onDelete={() => 
+              Alert.alert(
+                'Supression', 
+                'Voulez-vous vraiment supprimer cet employé ?', [
+                {text: 'Annuler', cancelable:true},
+                /* Asynchrone :  deleteEmploye() est terminé avant de passer à getEmploye() */
+                {text: 'Oui', onPress: async () => {
+                  deleteEmploye(parseInt(item.id),
+                        Alert.alert('Désormais, '+'\"'+item.nom+'\"'+' ne fait plus partie de votre employé'))
+                  await getEmploye()}
+              }])
+            }
           />
         )}
       />
