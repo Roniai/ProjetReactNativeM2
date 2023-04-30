@@ -21,6 +21,8 @@ const headers = {
 export default function App() {
   const [data, setData] = useState([]);
   const [salaireTotal, setSalaireTotal] = useState(0);
+  const [salaireMin, setSalaireMin] = useState(0);
+  const [salaireMax, setSalaireMax] = useState(0);
 
   /* Tous les attributs de l'entité Employe */
   const [id, setId] = useState(0);
@@ -90,12 +92,19 @@ export default function App() {
       .then(resJson => {
         console.log('delete:', resJson)
         getEmploye()
+        getTotalSalaire();
+        getMinSalaire();
+        getMaxSalaire();
       }).catch(e => { console.log(e) })
   }
 
   /* Réinitialiser des données */
   const reloadFormsEmploye = () => {
     getEmploye()
+    getTotalSalaire();
+    getMinSalaire();
+    getMaxSalaire();
+
     setVisible(false);
     setId(0)
     setNumero("0")
@@ -113,10 +122,45 @@ export default function App() {
     setNbjours(nbjours)
     setTauxjournalier(tauxjournalier)
   }
+
+  /* Fonctionnalités sur le salaire */
+  const getTotalSalaire = async () => {
+    setLoading(true)
+    await fetch(url + "/total")
+      .then((res) => res.json())
+      .then((res) => {
+        setSalaireTotal(res);
+      })
+      .catch(e => console.log(e))
+    setLoading(false)
+  }
+  const getMinSalaire = async () => {
+    setLoading(true)
+    await fetch(url + "/min")
+      .then((res) => res.json())
+      .then((res) => {
+        setSalaireMin(res);
+      })
+      .catch(e => console.log(e))
+    setLoading(false)
+  }
+  const getMaxSalaire = async () => {
+    setLoading(true)
+    await fetch(url + "/max")
+      .then((res) => res.json())
+      .then((res) => {
+        setSalaireMax(res);
+      })
+      .catch(e => console.log(e))
+    setLoading(false)
+  }
   
 
   useEffect(() => {
     getEmploye();
+    getTotalSalaire();
+    getMinSalaire();
+    getMaxSalaire();
   }, [])
 
   return (
@@ -158,7 +202,7 @@ export default function App() {
                 {text: 'Oui', onPress: async () => {
                   deleteEmploye(parseInt(item.id),
                         Alert.alert('Désormais, '+'\"'+item.nom+'\"'+' ne fait plus partie de votre employé'))
-                  await getEmploye()}
+                  await getEmploye(), getTotalSalaire(), getMinSalaire(), getMaxSalaire();}
               }])
             }
           />
@@ -167,12 +211,11 @@ export default function App() {
       />
 
       {/* ############## Pied de page ############## */}
-      <Surface style={styles.header}>
+      <View style={styles.footer}>
         <Text style={styles.salaireTotText}>Salaire Totale: {salaireTotal}</Text>
-        {/* <Text style={styles.salaireMText}>Salaire Maximum: {}</Text>
-        <Text style={styles.salaireMText}>Salaire Minimum: {}</Text> */}
-
-      </Surface>
+        <Text style={styles.salaireMText}>Salaire Maximum: {salaireMax}</Text>
+        <Text style={styles.salaireMText}>Salaire Minimum: {salaireMin}</Text>
+      </View>
 
       {/* ############## Fenêtre de formulaire ############## */}
       <ModalView
@@ -239,12 +282,20 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white'
   },
+  footer: {
+    marginTop: Platform.OS === 'android' ? 0 : 0,
+    padding: 10,
+    elevation: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
   salaireTotText: {
     fontSize:16,
     fontWeight:'900'
   },
   salaireMText: {
     fontSize:16,
-    fontWeight:'900'
+    fontWeight:'500'
   },
 });
