@@ -1,7 +1,9 @@
 # ProjetReactNativeM2
 ## Prérequis :
-- Télécharger et installer Java puis configurer : [Comment configurer java](https://www.lemagit.fr/conseil/Bien-debuter-comment-parametrer-JAVA_HOME-dans-Windows)
-- Télécharger et installer Android Studio
+- Télécharger et installer **Java** puis configurer : [Comment configurer java](https://www.lemagit.fr/conseil/Bien-debuter-comment-parametrer-JAVA_HOME-dans-Windows)
+- Télécharger et installer **Apache Maven** : [Configurer Apache Maven](https://fr.wikibooks.org/wiki/D%C3%A9velopper_en_Java/Introduction_%C3%A0_Apache_Maven)
+- Télécharger et installer **PostgreSQL**
+- Télécharger et installer **Android Studio**
 - Créer un émulateur (ou AVD) : [Créer et gérer des appareils virtuels](https://developer.android.com/studio/run/managing-avds?hl=fr)
 - Activer le mode débogage de votre téléphone si vous ne voulez pas utiliser un émulateur : [Activer le mode débogage Android](https://developer.android.com/codelabs/basic-android-kotlin-training-run-on-mobile-device?hl=fr#0)
 
@@ -9,12 +11,12 @@
 Repository : DAO
 Model : Modèle (Hibernate)
 ### Configurer PostgreSQL :
-- Télécharge et installer PostgreSQL
 - Utiliser comme mot de passe **admin** (nom d'utilisateur par défaut : **postgres**)
 - Lancer **pgAdmin**
 - Créer une base de données et nommé en : **m2reactnat_db**
 - Créer une table nommée : **employe**
-- Créer les colonnes suivantes :  
+- Créer les colonnes suivantes : 
+  
 {  
   id : integer  
   nbjours : integer  
@@ -36,7 +38,6 @@ Model : Modèle (Hibernate)
 // Endpoint GET : http://localhost:8080/employe/  
 
 ### Configurer et lancer l'application :
-- Télécharge et installer **Apache Maven** : [Configurer Apache Maven](https://fr.wikibooks.org/wiki/D%C3%A9velopper_en_Java/Introduction_%C3%A0_Apache_Maven)
 - Build apps : Installer tous les dependances
 ```cmd
 mvn compile
