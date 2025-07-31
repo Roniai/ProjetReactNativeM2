@@ -63,6 +63,8 @@ const url = 'http://10.0.2.2:8080/employe';
 ```cmd
 ipconfig
 ```
+**NB :** Utiliser l'**Adresse IPv4**
+
 - Changer l'url (Par example : :
 ```cmd
 const url = '[http://adresse_ip:8080/employe](http://192.168.1.127:8080/employe)';
