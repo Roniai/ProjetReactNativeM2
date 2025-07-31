@@ -14,23 +14,23 @@ Model : Modèle (Hibernate)
 - Lancer pgAdmin
 - Créer une base de données vice nommé : **m2reactnat_db**
 - Créer une table nommée : **employe**
-- Créer les colonnes suivantes : {
-  id : integer
-  nbjours : integer
-  nom : character varying (50)
-  numero : integer
-  tauxjournalier : integer
-}
-**NB :** Pour faire un test de l'endpoint, n'oublier pas de télécharger et d'installer **Postman**
-//POST Parameter Body
-{
-    "numero":,
-    "nom":"",
-    "nbjours":,
-    "tauxjournalier":
-}
-// Endpoint POST : http://localhost:8080/employe/create
-// Endpoint GET : http://localhost:8080/employe/
+- Créer les colonnes suivantes : {  
+  id : integer  
+  nbjours : integer  
+  nom : character varying (50)  
+  numero : integer  
+  tauxjournalier : integer  
+}  
+**NB :** Pour faire un test de l'endpoint, n'oublier pas de télécharger et d'installer **Postman**  
+//POST Parameter Body  
+{  
+    "numero":,  
+    "nom":"",  
+    "nbjours":,  
+    "tauxjournalier":  
+}  
+// Endpoint POST : http://localhost:8080/employe/create  
+// Endpoint GET : http://localhost:8080/employe/  
 
 ### Configurer et lancer l'application :
 - Build apps : Installer tous les dependances
