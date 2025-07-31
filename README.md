@@ -60,7 +60,7 @@ Aller dans le fichier **App.js** pour configurer l'url
 ```
 const url = 'http://10.0.2.2:8080/employe';
 ```
-**NB :** http://10.0.2.2:<port> => fait référence à http://localhost:<port> de votre machine
+**NB :** http://10.0.2.2:PORT => fait référence à http://localhost:PORT de votre machine
 
 **2-Utiliser un appareil Andoid (device) :**
 - Lier l'ordinateur et un téléphone à une même réseau
@@ -70,11 +70,11 @@ ipconfig
 ```
 **NB :** Utiliser l'**Adresse IPv4**
 
-- Changer l'url (Par example : :
+- Changer l'url :
 ```cmd
 const url = '[http://adresse_ip:8080/employe](http://192.168.1.127:8080/employe)';
 ```
-**NB :** http://adresse_ip:<port> => fait référence à http://localhost:<port> de votre machine
+**NB :** http://ADRESSE_IP:PORT => fait référence à http://localhost:PORT de votre machine
 
 ### Configurer et lancer l'application :
 - Build apps : Installer tous les dependances
