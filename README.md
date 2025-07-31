@@ -11,10 +11,11 @@ Model : Modèle (Hibernate)
 ### Configurer PostgreSQL :
 - Télécharge et installer PostgreSQL
 - Utiliser comme mot de passe **admin** (nom d'utilisateur par défaut : **postgres**)
-- Lancer pgAdmin
-- Créer une base de données vice nommé : **m2reactnat_db**
+- Lancer **pgAdmin**
+- Créer une base de données et nommé en : **m2reactnat_db**
 - Créer une table nommée : **employe**
-- Créer les colonnes suivantes : {  
+- Créer les colonnes suivantes :  
+{  
   id : integer  
   nbjours : integer  
   nom : character varying (50)  
@@ -35,6 +36,7 @@ Model : Modèle (Hibernate)
 // Endpoint GET : http://localhost:8080/employe/  
 
 ### Configurer et lancer l'application :
+- Télécharge et installer **Apache Maven** : [Configurer Apache Maven](https://fr.wikibooks.org/wiki/D%C3%A9velopper_en_Java/Introduction_%C3%A0_Apache_Maven)
 - Build apps : Installer tous les dependances
 ```cmd
 mvn compile
