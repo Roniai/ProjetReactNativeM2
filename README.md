@@ -46,6 +46,29 @@ mvn spring-boot:run
 ```
 
 ## Frontend : React Native
+### Configurer le port etl'IP :
+Vous avez le choix entre utiliser un émulateur ou utiliser directement votre appareil (device).
+Aller dans le fichier **App.js** pour configurer l'url
+**1-Utiliser un émulateur :** 
+- Activer WIFI dans l'Emulateur
+- Changer l'url :
+```
+const url = 'http://10.0.2.2:8080/employe';
+```
+**NB :** http://10.0.2.2:<port> => fait référence à http://localhost:<port> de votre machine*/
+
+**2-Utiliser un appareil Andoid (device) :**
+- Lier l'ordinateur et un téléphone à une même réseau
+- Lancer la ligne de commande "ipconfig" pour connaître votre Adresse IP
+```cmd
+ipconfig
+```
+- Changer l'url (Par example : :
+```cmd
+const url = '[http://adresse_ip:8080/employe](http://192.168.1.127:8080/employe)';
+```
+**NB : ** http://adresse_ip:<port> => fait référence à http://localhost:<port> de votre machine */
+
 ### Configurer et lancer l'application :
 - Build apps : Installer tous les dependances
 ```cmd
