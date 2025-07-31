@@ -21,7 +21,8 @@ Model : Modèle (Hibernate)
   numero : integer  
   tauxjournalier : integer  
 }  
-**NB :** Pour faire un test de l'endpoint, n'oublier pas de télécharger et d'installer **Postman**  
+**NB :** Pour faire un test de l'endpoint, n'oublier pas de télécharger et d'installer **Postman**
+    
 //POST Parameter Body  
 {  
     "numero":,  
@@ -29,6 +30,7 @@ Model : Modèle (Hibernate)
     "nbjours":,  
     "tauxjournalier":  
 }  
+  
 // Endpoint POST : http://localhost:8080/employe/create  
 // Endpoint GET : http://localhost:8080/employe/  
 
@@ -46,7 +48,7 @@ mvn spring-boot:run
 ```
 
 ## Frontend : React Native
-### Configurer le port etl'IP :
+### Configurer le port et l'IP :
 Vous avez le choix entre utiliser un émulateur ou utiliser directement votre appareil (device).
 Aller dans le fichier **App.js** pour configurer l'url
 **1-Utiliser un émulateur :** 
