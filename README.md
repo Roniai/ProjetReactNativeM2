@@ -1,4 +1,4 @@
-# Gestion d'employé
+# Gestion des employés
 ## Prérequis :
 - Télécharger et installer **Java** puis configurer : [Comment configurer java](https://www.lemagit.fr/conseil/Bien-debuter-comment-parametrer-JAVA_HOME-dans-Windows)
 - Télécharger et installer **Apache Maven** : [Configurer Apache Maven](https://fr.wikibooks.org/wiki/D%C3%A9velopper_en_Java/Introduction_%C3%A0_Apache_Maven)
